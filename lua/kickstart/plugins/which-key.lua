@@ -35,8 +35,8 @@ return {
         g = {
           name = 'Git',
           b = { '<cmd>GBrowse<CR>', 'Browse' },
-          g = { '<cmd>Lazygit<CR>', 'Lazy' },
-          l = { '<cmd>LazygitFilter<CR>', 'Log' },
+          g = { '<cmd>LazyGit<CR>', 'Lazy' },
+          l = { '<cmd>LazyGitFilter<CR>', 'Log' },
         },
         b = {
           name = 'Buffers',
