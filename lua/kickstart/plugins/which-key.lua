@@ -22,7 +22,8 @@ return {
 
       -- Document existing key chains
       require('which-key').register({
-        f = { '<cmd>RnvimrToggle<CR>', 'File' },
+        f = { "<cmd>lua require('ranger-nvim').open(true)<CR>", 'File' },
+        F = { "<cmd>lua require('ranger-nvim').open(false)<CR>", 'File Root' },
         N = { '<cmd>Notifications<CR>', 'Notifications' },
         cp = { '<cmd>Copilot panel<CR>', 'Copilot' },
         n = {

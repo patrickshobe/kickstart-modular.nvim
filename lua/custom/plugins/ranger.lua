@@ -1,10 +1,14 @@
 return {
   {
-    'kevinhwang91/rnvimr',
+    'kelly-lin/ranger.nvim',
     config = function()
-      vim.g.rnvimr_edit_cmd = 'drop'
-      vim.g.rnvimr_enable_bw = 1
-      vim.g.rnvimr_enable_picker = 1
+      require('ranger-nvim').setup { replace_netrw = true }
+      vim.api.nvim_set_keymap('n', '<leader>ef', '', {
+        noremap = true,
+        callback = function()
+          require('ranger-nvim').open(true)
+        end,
+      })
     end,
   },
 }
