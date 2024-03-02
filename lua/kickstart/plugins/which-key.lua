@@ -21,13 +21,42 @@ return {
       require('which-key').setup()
 
       -- Document existing key chains
-      require('which-key').register {
-        ['<leader>c'] = { name = '[C]ode', _ = 'which_key_ignore' },
-        ['<leader>d'] = { name = '[D]ocument', _ = 'which_key_ignore' },
-        ['<leader>r'] = { name = '[R]ename', _ = 'which_key_ignore' },
-        ['<leader>s'] = { name = '[S]earch', _ = 'which_key_ignore' },
-        ['<leader>w'] = { name = '[W]orkspace', _ = 'which_key_ignore' },
-      }
+      require('which-key').register({
+        f = { '<cmd>RnvimrToggle<CR>', 'File' },
+        cp = { '<cmd>Copilot panel<CR>', 'Copilot' },
+        n = {
+          name = 'Notes',
+          t = { '<cmd>ObsidianToday<CR>', 'Today' },
+          s = { '<cmd>ObsidianSearch<CR>', 'Search' },
+          y = { '<cmd>ObsidianYesterday<CR>', 'Yesterday' },
+        },
+        g = {
+          name = 'Git',
+          b = { '<cmd>GBrowse<CR>', 'Browse' },
+          g = { '<cmd>Lazygit<CR>', 'Lazy' },
+          l = { '<cmd>LazygitFilter<CR>', 'Log' },
+        },
+        b = {
+          name = 'Buffers',
+          d = { '<cmd>BufferDelete<CR>', 'Delete' },
+          D = { '<cmd>BufferPickDelete<CR>', 'Pick Delete' },
+          j = { '<cmd>BufferPrevious<CR>', 'Previous' },
+          k = { '<cmd>BufferNext<CR>', 'Next' },
+          p = { '<cmd>BufferPick<CR>', 'Pick' },
+          q = { '<cmd>BufferCloseAllButPinned<CR>', 'Clear' },
+        },
+        s = {
+          name = 'Search',
+          F = { "<cmd>lua require('telescope.builtin').git_files()<CR>", 'Find File' },
+          f = { "<cmd>lua require('telescope.builtin').find_files()<CR>", 'Find Git Files' },
+          g = { "<cmd>lua require('telescope.builtin').git_status()<CR>", 'Git Status' },
+          sh = { "<cmd>lua require('telescope.builtin').search_history()<CR>", 'History' },
+          ib = { "<cmd>lua require('telescope.builtin').current_buffer_fuzzy_find()<CR>", 'Current Buffer Fuzzy Find' },
+          h = { "<cmd>lua require('telescope.builtin').history()<CR>", 'History' },
+          o = { "<cmd>lua require('telescope.builtin').oldfiles()<CR>", 'Old files' },
+          t = { "<cmd>lua require('telescope.builtin').tags()<CR>", 'Tags' },
+        },
+      }, { prefix = '<leader>' })
     end,
   },
 }

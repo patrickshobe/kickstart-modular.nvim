@@ -7,11 +7,20 @@ return {
 
       ---@diagnostic disable-next-line: missing-fields
       require('nvim-treesitter.configs').setup {
-        ensure_installed = { 'bash', 'c', 'html', 'lua', 'markdown', 'vim', 'vimdoc' },
+        ensure_installed = { 'bash', 'ruby', 'html', 'lua', 'markdown', 'vim', 'vimdoc', 'yaml', 'json' },
         -- Autoinstall languages that are not installed
         auto_install = true,
         highlight = { enable = true },
         indent = { enable = true },
+
+        incremental_selection = {
+          enable = true,
+          keymaps = {
+            init_selection = '<ENTER>',
+            node_incremental = '<ENTER>',
+            node_decremental = '<S-ENTER>',
+          },
+        },
       }
 
       -- There are additional nvim-treesitter modules that you can use to interact

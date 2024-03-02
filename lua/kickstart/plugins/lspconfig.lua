@@ -144,6 +144,21 @@ return {
         -- But for many setups, the LSP (`tsserver`) will work just fine
         -- tsserver = {},
         --
+        solargraph = {
+          settings = {
+            diagnostics = {
+              reporters = { 'rubocop' },
+            },
+          },
+        },
+        ruby_ls = {},
+        html = {},
+        tsserver = {},
+        jsonls = {},
+        yamlls = {},
+        sqlls = {},
+        dockerls = {},
+        docker_compose_language_service = {},
 
         lua_ls = {
           -- cmd = {...},

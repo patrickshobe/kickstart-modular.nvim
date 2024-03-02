@@ -28,7 +28,7 @@ return {
       --    you can use this plugin to help you. It even has snippets
       --    for various frameworks/libraries/etc. but you will have to
       --    set up the ones that are useful for you.
-      -- 'rafamadriz/friendly-snippets',
+      'rafamadriz/friendly-snippets',
     },
     config = function()
       -- See `:help cmp`
@@ -82,13 +82,43 @@ return {
               luasnip.jump(-1)
             end
           end, { 'i', 's' }),
+
+          ['<Tab>'] = cmp.mapping(function(fallback)
+            local col = vim.fn.col '.' - 1
+
+            if cmp.visible() then
+              cmp.select_next_item(select_opts)
+            elseif col == 0 or vim.fn.getline('.'):sub(col, col):match '%s' then
+              fallback()
+            else
+              cmp.complete()
+            end
+          end, { 'i', 's' }),
+
+          ['<S-Tab>'] = cmp.mapping(function(fallback)
+            if cmp.visible() then
+              cmp.select_prev_item(select_opts)
+            else
+              fallback()
+            end
+          end, { 'i', 's' }),
+
+          ['<C-CR>'] = cmp.mapping(function(fallback)
+            if cmp.visible() then
+              cmp.confirm { behavior = cmp.ConfirmBehavior.Replace, select = true }
+            else
+              fallback()
+            end
+          end),
         },
         sources = {
-          { name = 'nvim_lsp' },
-          { name = 'luasnip' },
+          { name = 'copilot' },
           { name = 'path' },
+          { name = 'nvim_lsp', keyword_length = 2 },
+          { name = 'luasnip', keyword_length = 2 },
         },
       }
+      require('luasnip.loaders.from_vscode').lazy_load()
     end,
   },
 }
