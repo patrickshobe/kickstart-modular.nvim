@@ -23,12 +23,13 @@ return {
       -- Document existing key chains
       require('which-key').register({
         f = { '<cmd>RnvimrToggle<CR>', 'File' },
+        N = { '<cmd>Notifications<CR>', 'Notifications' },
         cp = { '<cmd>Copilot panel<CR>', 'Copilot' },
         n = {
           name = 'Notes',
           t = { '<cmd>ObsidianToday<CR>', 'Today' },
           s = { '<cmd>ObsidianSearch<CR>', 'Search' },
-          y = { '<cmd>ObsidianYesterday<CR>', 'Yesterday' },
+          y = { '<cmd>ObsidianYesterday<CR>', 'Search' },
         },
         g = {
           name = 'Git',
