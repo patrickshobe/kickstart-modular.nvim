@@ -9,6 +9,12 @@ return {
       options = { try_as_border = true },
     },
     init = function()
+      vim.cmd [[colorscheme onedark]]
+      -- Access the colors defined by the theme
+      local colors = require 'onedark.colors'
+      -- Use the theme's cyan color for the IndentScope highlight group
+      vim.cmd('highlight MiniIndentscopeSymbol guifg=' .. colors.diff_text)
+
       vim.api.nvim_create_autocmd('FileType', {
         pattern = {
           'help',
